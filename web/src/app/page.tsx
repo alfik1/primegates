@@ -1,0 +1,143 @@
+import { ArrowRight, ShieldCheck, Globe, Tag, Truck } from "lucide-react";
+import ActivityIcon from "@/components/ActivityIcon";
+import { SITE, ACTIVITIES } from "@/lib/siteData";
+import { CLIENT } from "@/lib/config";
+
+const why = [
+  { icon: ShieldCheck, t: "Quality checked", d: "Products are sourced from vetted suppliers and inspected before they ship." },
+  { icon: Globe, t: "Import and export", d: "We handle sourcing, shipping and the paperwork across borders." },
+  { icon: Tag, t: "Fair pricing", d: "Competitive prices for bulk buyers, retailers and individual customers." },
+  { icon: Truck, t: "On-time delivery", d: "Clear timelines and responsive support from order to arrival." },
+];
+
+export default function Home() {
+  return (
+    <main>
+      {/* HERO */}
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="fade">
+            <p className="hero-sub">{SITE.name}, Ajman Free Zone</p>
+            <div className="ar gold hero-ar">{SITE.arTagline}</div>
+            <h1>Your gateway to premium trade across Saudi Arabia and the GCC.</h1>
+            <p className="lead">
+              Ten licensed trade activities under one roof: electronics, food and beverages, beauty, cleaning,
+              auto parts and office furniture, supplied wholesale and retail.
+            </p>
+            <div className="btns">
+              <a href="#activities" className="btn btn-gold">Explore our activities</a>
+              <a href={`${CLIENT}/contact`} className="btn btn-outline">Contact us</a>
+            </div>
+          </div>
+
+          <div className="gate fade" style={{ animationDelay: ".2s" }}>
+            <div className="gate-in">
+              <img src="/primelogo.jpeg" alt="Prime Gate General Trading logo" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BAND */}
+      <div className="band">
+        <div className="container band-in">
+          <span>Wholesale and retail</span>
+          <span>Import and export</span>
+          <span>{ACTIVITIES.length} trade categories</span>
+          <span>UAE licensed free zone entity</span>
+        </div>
+      </div>
+
+      {/* ABOUT */}
+      <section className="section">
+        <div className="container split">
+          <div>
+            <div className="head" style={{ marginBottom: 0 }}>
+              <h2>A trading house built for the Kingdom&apos;s growing market</h2>
+              <div className="line" />
+            </div>
+            <p className="muted" style={{ marginTop: 24 }}>
+              Prime Gate General Trading connects Saudi and GCC businesses with dependable products and
+              suppliers. From a single office chair to a container of spare parts, we manage sourcing,
+              quality and delivery so you can focus on selling.
+            </p>
+            <ul className="checks">
+              <li>Licensed free zone entity with ten approved trade activities</li>
+              <li>Bulk pricing for retailers, offices and distributors</li>
+              <li>Arabic and English support for every order</li>
+            </ul>
+            <a href={`${CLIENT}/about`} className="btn btn-outline">Read our story</a>
+          </div>
+
+          <div className="panel kv">
+            <div><small>Company</small><b>{SITE.name}</b></div>
+            <div><small>Legal status</small><b>{SITE.legal}</b></div>
+            <div><small>License number</small><b>{SITE.license}</b></div>
+            <div style={{ border: 0, paddingBottom: 0 }}><small>Office</small><b>{SITE.address}</b></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ACTIVITIES */}
+      <section className="section" id="activities" style={{ background: "var(--bg2)", borderBlock: "1px solid var(--line)" }}>
+        <div className="container">
+          <div className="head">
+            <h2>What we trade</h2>
+            <p>Every activity below is covered by our trade license. Select one to see what we supply and request a quote.</p>
+            <div className="line" />
+          </div>
+
+          <div className="rows">
+            {ACTIVITIES.map((a) => (
+              <a key={a.slug} href={`${CLIENT}/activities/${a.slug}`} className="row">
+                <div className="row-title">
+                  <div className="row-icon"><ActivityIcon name={a.icon} /></div>
+                  <div>
+                    <h3>{a.title}</h3>
+                    <div className="ar">{a.ar}</div>
+                  </div>
+                </div>
+                <div className="row-body">
+                  <p className="short">{a.short}</p>
+                  <p className="med">{a.medium}</p>
+                </div>
+                <ArrowRight className="go" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="section">
+        <div className="container">
+          <div className="head">
+            <h2>Why businesses choose Prime Gate</h2>
+            <div className="line" />
+          </div>
+          <div className="why">
+            {why.map((w) => (
+              <div key={w.t}>
+                <w.icon size={30} />
+                <h3>{w.t}</h3>
+                <p>{w.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container" style={{ paddingBottom: 60 }}>
+        <div className="cta">
+          <h2>Tell us what you need to source</h2>
+          <p>Send your product list or requirements and we will reply with availability and pricing.</p>
+          <div className="btns">
+            <a href={`${CLIENT}/contact`} className="btn btn-gold">Request a quote</a>
+            <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-outline">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
