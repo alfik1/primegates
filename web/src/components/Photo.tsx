@@ -1,39 +1,33 @@
 "use client";
-
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-type PhotoProps = {
-  src: string;
-  alt: string;
+type Props = {
+  src?: string; // real photo (shown first)
+  art?: string; // built-in drawing (shown if the photo is missing)
+  alt?: string;
   className?: string;
-  fallback?: ReactNode;
+  fallback?: ReactNode; // shown if neither exists
 };
 
-export default function Photo({ src, alt, className, fallback }: PhotoProps) {
+export default function Photo({ src, art, alt = "", className = "", fallback = null }: Props) {
   const [failed, setFailed] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
+  const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const img = imgRef.current;
-    if (img && img.complete && img.naturalWidth === 0) {
-      setFailed(true);
-    }
+    const el = ref.current;
+    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
   }, [src]);
 
-  return (
-    <div className={className}>
-      {failed ? (
-        fallback
-      ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          onError={() => setFailed(true)}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
-        />
-      )}
-    </div>
-  );
+  if (src && !failed) {
+    return (
+      <div className={`photo ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img ref={ref} src={src} alt={alt} onError={() => setFailed(true)} />
+      </div>
+    );
+  }
+  if (art) {
+    return <div className={`photo ${className}`} role="img" aria-label={alt} dangerouslySetInnerHTML={{ __html: art }} />;
+  }
+  return <div className={`photo ${className}`}>{fallback}</div>;
 }

@@ -1,6 +1,7 @@
 import { ArrowRight, ShieldCheck, Globe, Tag, Truck } from "lucide-react";
 import ActivityIcon from "@/components/ActivityIcon";
 import Photo from "@/components/Photo";
+import { ART } from "@/lib/artwork";
 import { SITE, ACTIVITIES } from "@/lib/siteData";
 import { CLIENT } from "@/lib/config";
 
@@ -30,10 +31,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="gate fade" style={{ animationDelay: ".2s" }}>
-            <div className="gate-in">
-              <img src="/primelogo.jpeg" alt="Prime Gate General Trading logo" />
+          <div className="hero-visual fade" style={{ animationDelay: ".2s" }}>
+            <div className="gate">
+              <div className="gate-in">
+                <img src="/primelogo.jpeg" alt="Prime Gate General Trading logo" />
+              </div>
             </div>
+            <Photo className="hero-chip c1" art={ART["general-trading"]} alt="General trading" />
+            <Photo className="hero-chip c2" art={ART["e-commerce"]} alt="E-commerce" />
+            <Photo className="hero-chip c3" art={ART["mobile-phones"]} alt="Mobile phones" />
+            <Photo className="hero-chip c4" art={ART["perfumes-cosmetics"]} alt="Perfumes and cosmetics" />
           </div>
         </div>
       </section>
@@ -91,7 +98,7 @@ export default function Home() {
             {ACTIVITIES.map((a) => (
               <a key={a.slug} href={`${CLIENT}/activities/${a.slug}`} className="row">
                 <div className="row-title">
-                  <Photo className="row-icon" src={`/activities/${a.slug}.svg`} alt={a.title} fallback={<ActivityIcon name={a.icon} />} />
+                  <Photo className="row-icon" src={`${CLIENT}/activities/${a.slug}-1.jpg`} art={ART[a.slug]} alt={a.title} fallback={<ActivityIcon name={a.icon} />} />
                   <div>
                     <h3>{a.title}</h3>
                   </div>

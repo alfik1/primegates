@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader.jsx";
-import ActivityIcon from "../components/ActivityIcon.jsx";
+import Photo from "../components/Photo.jsx";
+import { ART } from "../artwork";
 import { ACTIVITIES } from "../data";
 
 const cats = ["All", ...new Set(ACTIVITIES.map((a) => a.cat))];
@@ -23,12 +25,14 @@ export default function Gallery() {
 
           <div className="gallery">
             {items.map((a) => (
-              <figure className="tile" key={a.slug}>
-                {/* Uses the same photos as the activities: public/activities/<slug>.svg */}
-                <img src={`/activities/${a.slug}.svg`} alt={a.title} loading="lazy" onError={(e) => (e.currentTarget.style.display = "none")} />
-                <ActivityIcon name={a.icon} size={54} />
-                <figcaption>{a.title}</figcaption>
-              </figure>
+              <Link to={`/activities/${a.slug}`} className="tile" key={a.slug}>
+                {/* Cover photo: public/activities/<slug>-1.jpg (drawing is used if the photo is missing) */}
+                <Photo className="tile-art" src={`/activities/${a.slug}-1.jpg`} art={ART[a.slug]} alt={a.title} />
+                <span className="cap">
+                  <b>{a.title}</b>
+                  <span>{a.short}</span>
+                </span>
+              </Link>
             ))}
           </div>
         </div>

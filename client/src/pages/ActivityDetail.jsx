@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
-import ActivityIcon from "../components/ActivityIcon.jsx";
 import Photo from "../components/Photo.jsx";
+import { ART } from "../artwork";
 import { ACTIVITIES, SITE } from "../data";
+
+// Photos live in public/activities and are named <activity-slug>-1.jpg, -2.jpg, -3.jpg
+const photoUrl = (slug, n) => `/activities/${slug}-${n}.jpg`;
+
+function Thumb({ src, alt, on, onPick }) {
+  const [ok, setOk] = useState(true);
+  if (!ok) return null;
+  return (
+    <button type="button" className={`thumb ${on ? "on" : ""}`} onClick={onPick} aria-label={alt}>
+      <img src={src} alt={alt} loading="lazy" onError={() => setOk(false)} />
+    </button>
+  );
+}
 
 export default function ActivityDetail() {
   const { slug } = useParams();
+  const [cur, setCur] = useState(1);
+
+  useEffect(() => {
+    setCur(1);
+  }, [slug]);
+
   const i = ACTIVITIES.findIndex((a) => a.slug === slug);
 
   if (i < 0) {
@@ -23,6 +43,7 @@ export default function ActivityDetail() {
   const a = ACTIVITIES[i];
   const prev = ACTIVITIES[(i - 1 + ACTIVITIES.length) % ACTIVITIES.length];
   const next = ACTIVITIES[(i + 1) % ACTIVITIES.length];
+  const caption = a.points[cur - 1] || a.short;
 
   return (
     <>
@@ -31,8 +52,15 @@ export default function ActivityDetail() {
       <section className="section">
         <div className="container detail">
           <article className="prose">
-            <Photo className="detail-photo" src={`/activities/${a.slug}.svg`} alt={a.title} fallback={<ActivityIcon name={a.icon} size={64} />} />
-            <p style={{ color: "var(--text)", fontSize: 21, fontWeight: 600 }}>{a.short}</p>
+            <Photo key={`${a.slug}-${cur}`} className="detail-photo gal" src={photoUrl(a.slug, cur)} art={ART[a.slug]} alt={`${a.title} - ${caption}`} />
+            <p className="photo-cap"><b>{caption}.</b> {a.short}</p>
+
+            <div className="thumbs">
+              {[1, 2, 3].map((n) => (
+                <Thumb key={`${a.slug}-${n}`} src={photoUrl(a.slug, n)} alt={`${a.title} photo ${n}`} on={cur === n} onPick={() => setCur(n)} />
+              ))}
+            </div>
+
             <p>{a.medium}</p>
             <p>{a.long}</p>
 

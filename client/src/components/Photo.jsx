@@ -1,25 +1,19 @@
 import { useState } from "react";
 
-export default function Photo({ src, art, alt, className, fallback, hideIfMissing }) {
+// src = real photo (shown first). art = built-in drawing (shown if the photo is missing).
+export default function Photo({ src, art, alt = "", className = "", fallback = null, hideIfMissing = false }) {
   const [failed, setFailed] = useState(false);
 
-  const url = art
-    ? `data:image/svg+xml;utf8,${encodeURIComponent(art)}`
-    : src;
-
-  if (!url || failed) {
-    if (hideIfMissing) return null;
-    return <div className={className}>{fallback}</div>;
+  if (src && !failed) {
+    return (
+      <div className={`photo ${className}`}>
+        <img src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} />
+      </div>
+    );
   }
-
-  return (
-    <div className={className}>
-      <img
-        src={url}
-        alt={alt}
-        onError={() => setFailed(true)}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-      />
-    </div>
-  );
+  if (art) {
+    return <div className={`photo ${className}`} role="img" aria-label={alt} dangerouslySetInnerHTML={{ __html: art }} />;
+  }
+  if (hideIfMissing) return null;
+  return <div className={`photo ${className}`}>{fallback}</div>;
 }
