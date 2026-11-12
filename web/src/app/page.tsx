@@ -93,7 +93,6 @@ export default function Home() {
                   <div className="row-icon"><ActivityIcon name={a.icon} /></div>
                   <div>
                     <h3>{a.title}</h3>
-                    <div className="ar">{a.ar}</div>
                   </div>
                 </div>
                 <div className="row-body">
