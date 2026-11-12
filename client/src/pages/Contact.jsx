@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import { SITE, ACTIVITIES } from "../data";
+
+const WHATSAPP_NUMBER = "971551599313";
+const WHATSAPP_DISPLAY = "+971 55 159 9313";
 
 export default function Contact() {
   const [params] = useSearchParams();
@@ -31,6 +34,10 @@ export default function Contact() {
             <div className="card">
               <h3 style={{ fontSize: 30, marginBottom: 18 }}>Get in touch</h3>
               <div className="info-row"><Phone size={18} /><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></div>
+              <div className="info-row">
+                <MessageCircle size={18} />
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">WhatsApp {WHATSAPP_DISPLAY}</a>
+              </div>
               <div className="info-row"><Mail size={18} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
               <div className="info-row">
                 <MapPin size={18} />

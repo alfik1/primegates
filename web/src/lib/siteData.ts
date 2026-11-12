@@ -6,7 +6,7 @@ export const SITE = {
   address: "26th Floor, Amber Gem Tower, Ajman",
   email: "waseemsidddique@gmail.com",
   phone: "+971 55 265 3707",
-  whatsapp: "971552653707",
+  whatsapp: "971551599313",
 };
 
 export const ACTIVITIES = [
