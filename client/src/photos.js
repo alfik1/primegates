@@ -4,12 +4,12 @@ const PREFIX = {
   "general-trading": "general",
   "e-commerce": "Ecommerce",
   "computers-peripherals": "computer",
-  "food-beverages": "Food",
+  "food-beverages": "Beverage",
   "detergents-disinfectants": "Detergents",
   "soap-hair-care": "Soap",
   "mobile-phones": "Mobile Phones",
   "perfumes-cosmetics": "Perfumes",
-  "auto-spare-parts": "Auto",
+  "auto-spare-parts": "AutoSpare",
   "office-furniture": "Office",
 };
 
