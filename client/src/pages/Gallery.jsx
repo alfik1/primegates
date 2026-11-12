@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader.jsx";
 import Photo from "../components/Photo.jsx";
 import { ART } from "../artwork";
+import { photoUrl } from "../photos";
 import { ACTIVITIES } from "../data";
 
 const cats = ["All", ...new Set(ACTIVITIES.map((a) => a.cat))];
@@ -26,8 +27,7 @@ export default function Gallery() {
           <div className="gallery">
             {items.map((a) => (
               <Link to={`/activities/${a.slug}`} className="tile" key={a.slug}>
-                {/* Cover photo: public/activities/<slug>-1.jpg (drawing is used if the photo is missing) */}
-                <Photo className="tile-art" src={`/activities/${a.slug}-1.jpg`} art={ART[a.slug]} alt={a.title} />
+                <Photo className="tile-art" src={photoUrl(a.slug, 1)} art={ART[a.slug]} alt={a.title} />
                 <span className="cap">
                   <b>{a.title}</b>
                   <span>{a.short}</span>

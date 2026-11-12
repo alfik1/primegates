@@ -4,10 +4,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import Photo from "../components/Photo.jsx";
 import { ART } from "../artwork";
+import { photoUrl } from "../photos";
 import { ACTIVITIES, SITE } from "../data";
-
-// Photos live in public/activities and are named <activity-slug>-1.jpg, -2.jpg, -3.jpg
-const photoUrl = (slug, n) => `/activities/${slug}-${n}.jpg`;
 
 function Thumb({ src, alt, on, onPick }) {
   const [ok, setOk] = useState(true);
