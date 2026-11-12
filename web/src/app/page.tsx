@@ -16,8 +16,39 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="hero">
-        <div className="container hero-grid">
+      <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
+        {/* Background video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+          }}
+        >
+          <source src="/home/home.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay so the text stays readable */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            background:
+              "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.35) 100%)",
+          }}
+        />
+
+        <div className="container hero-grid" style={{ position: "relative", zIndex: 1 }}>
           <div className="fade">
             <p className="hero-sub">{SITE.name}, Ajman, UAE</p>
             <h1>Your gateway to premium trade across the UAE and the GCC.</h1>
