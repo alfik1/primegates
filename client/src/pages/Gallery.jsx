@@ -11,7 +11,7 @@ export default function Gallery() {
 
   return (
     <>
-      <PageHeader title="Gallery" ar="معرض الصور" />
+      <PageHeader title="Gallery" />
 
       <section className="section">
         <div className="container">

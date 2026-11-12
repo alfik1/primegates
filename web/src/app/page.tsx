@@ -17,9 +17,8 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="fade">
-            <p className="hero-sub">{SITE.name}, Ajman Free Zone</p>
-            <div className="ar gold hero-ar">{SITE.arTagline}</div>
-            <h1>Your gateway to premium trade across Saudi Arabia and the GCC.</h1>
+            <p className="hero-sub">{SITE.name}, Ajman, UAE</p>
+            <h1>Your gateway to premium trade across the UAE and the GCC.</h1>
             <p className="lead">
               Ten licensed trade activities under one roof: electronics, food and beverages, beauty, cleaning,
               auto parts and office furniture, supplied wholesale and retail.
@@ -53,18 +52,18 @@ export default function Home() {
         <div className="container split">
           <div>
             <div className="head" style={{ marginBottom: 0 }}>
-              <h2>A trading house built for the Kingdom&apos;s growing market</h2>
+              <h2>A trading house built for the region&apos;s growing market</h2>
               <div className="line" />
             </div>
             <p className="muted" style={{ marginTop: 24 }}>
-              Prime Gate General Trading connects Saudi and GCC businesses with dependable products and
+              Prime Gate General Trading connects UAE and GCC businesses with dependable products and
               suppliers. From a single office chair to a container of spare parts, we manage sourcing,
               quality and delivery so you can focus on selling.
             </p>
             <ul className="checks">
               <li>Licensed free zone entity with ten approved trade activities</li>
               <li>Bulk pricing for retailers, offices and distributors</li>
-              <li>Arabic and English support for every order</li>
+              <li>Responsive support for every order</li>
             </ul>
             <a href={`${CLIENT}/about`} className="btn btn-outline">Read our story</a>
           </div>

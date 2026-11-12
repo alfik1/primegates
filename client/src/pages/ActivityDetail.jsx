@@ -25,7 +25,7 @@ export default function ActivityDetail() {
 
   return (
     <>
-      <PageHeader title={a.title} ar={a.ar} crumb="Activities" />
+      <PageHeader title={a.title} crumb="Activities" />
 
       <section className="section">
         <div className="container detail">

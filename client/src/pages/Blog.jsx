@@ -8,7 +8,7 @@ export const fmt = (d) => new Date(d).toLocaleDateString("en-GB", { day: "numeri
 export default function Blog() {
   return (
     <>
-      <PageHeader title="Blog" ar="المدونة" />
+      <PageHeader title="Blog" />
       <section className="section">
         <div className="container grid g2">
           {POSTS.map((p) => (

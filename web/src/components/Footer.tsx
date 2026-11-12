@@ -11,8 +11,7 @@ export default function Footer() {
             <img src="/primelogo.jpeg" alt="Prime Gate logo" />
             <span><b>Prime Gate</b><small>General Trading</small></span>
           </a>
-          <p>{SITE.name}. A free zone trading company supplying quality goods to Saudi Arabia and the GCC.</p>
-          <p className="ar" style={{ fontSize: 18, color: "var(--gold2)" }}>{SITE.arName}</p>
+          <p>{SITE.name}. A free zone trading company based in Ajman, UAE, supplying quality goods across the UAE and the GCC.</p>
         </div>
 
         <div>
@@ -29,7 +28,7 @@ export default function Footer() {
 
         <div>
           <h4>Contact</h4>
-          <div className="info-row"><MapPin size={18} /><span>{SITE.address}<br />License {SITE.license}</span></div>
+          <div className="info-row"><MapPin size={18} /><span>{SITE.address}, UAE<br />License {SITE.license}</span></div>
           <div className="info-row"><Phone size={18} /><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></div>
           <div className="info-row"><Mail size={18} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
         </div>

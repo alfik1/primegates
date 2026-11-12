@@ -4,15 +4,15 @@ import PageHeader from "../components/PageHeader.jsx";
 import { SITE, ACTIVITIES } from "../data";
 
 const values = [
-  { icon: Target, t: "Our mission", d: "To connect Saudi and GCC businesses with dependable, quality products through transparent trade and efficient supply." },
-  { icon: Eye, t: "Our vision", d: "To be the most trusted trading gateway between global suppliers and the markets of Saudi Arabia." },
+  { icon: Target, t: "Our mission", d: "To connect UAE and GCC businesses with dependable, quality products through transparent trade and efficient supply." },
+  { icon: Eye, t: "Our vision", d: "To be the most trusted trading gateway between global suppliers and the markets of the UAE and the GCC." },
   { icon: Handshake, t: "Our values", d: "Integrity in every deal, quality in every shipment and long-term partnership with every client." },
 ];
 
 export default function About() {
   return (
     <>
-      <PageHeader title="About us" ar="من نحن" />
+      <PageHeader title="About us" />
 
       <section className="section">
         <div className="container split">
@@ -23,7 +23,7 @@ export default function About() {
             </div>
             <p>
               {SITE.name} is a licensed free zone company based in Ajman. We bring together manufacturers,
-              distributors and buyers so that good products reach the shelves, offices and workshops of Saudi Arabia
+              distributors and buyers so that good products reach the shelves, offices and workshops of the UAE
               and the wider GCC without delay.
             </p>
             <p>
@@ -35,7 +35,7 @@ export default function About() {
           </div>
 
           <div className="panel kv">
-            <div><small>Company</small><b>{SITE.name}</b><div className="ar" style={{ color: "var(--gold2)", fontSize: 18, border: 0, padding: 0 }}>{SITE.arName}</div></div>
+            <div><small>Company</small><b>{SITE.name}</b></div>
             <div><small>Legal status</small><b>{SITE.legal}</b></div>
             <div><small>License number</small><b>{SITE.license}</b></div>
             <div style={{ border: 0, paddingBottom: 0 }}><small>License address</small><b>{SITE.address}</b></div>

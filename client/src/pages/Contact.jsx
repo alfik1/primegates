@@ -23,7 +23,7 @@ export default function Contact() {
 
   return (
     <>
-      <PageHeader title="Contact us" ar="اتصل بنا" />
+      <PageHeader title="Contact us" />
 
       <section className="section">
         <div className="container contact-grid">
@@ -34,7 +34,7 @@ export default function Contact() {
               <div className="info-row"><Mail size={18} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
               <div className="info-row">
                 <MapPin size={18} />
-                <span>{SITE.address}<br />License {SITE.license}<br /><span className="ar" style={{ color: "var(--gold2)" }}>{SITE.arAddress}</span></span>
+                <span>{SITE.address}, UAE<br />License {SITE.license}</span>
               </div>
             </div>
             <iframe
