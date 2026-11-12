@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
+import Photo from "../components/Photo.jsx";
 import { POSTS } from "../data";
 import { fmt } from "./Blog.jsx";
 
@@ -24,6 +25,7 @@ export default function BlogPost() {
       <PageHeader title={p.title} crumb="Blog" />
       <section className="section">
         <div className="container prose" style={{ maxWidth: 820 }}>
+          <Photo hideIfMissing className="detail-photo" src={`/blog/${p.slug}.svg`} alt={p.title} />
           <span className="tag">{p.tag}</span>
           <div className="meta" style={{ marginBottom: 26 }}>{fmt(p.date)}</div>
           {p.body.map((t, i) => <p key={i}>{t}</p>)}

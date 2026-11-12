@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Target, Eye, Handshake } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
+import Photo from "../components/Photo.jsx";
 import { SITE, ACTIVITIES } from "../data";
 
 const values = [
@@ -13,6 +14,10 @@ export default function About() {
   return (
     <>
       <PageHeader title="About us" />
+
+      <div className="container" style={{ marginTop: 56 }}>
+        <Photo hideIfMissing className="detail-photo wide" src="/about.svg" alt="Prime Gate General Trading" />
+      </div>
 
       <section className="section">
         <div className="container split">

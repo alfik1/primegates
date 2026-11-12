@@ -1,5 +1,6 @@
 import { ArrowRight, ShieldCheck, Globe, Tag, Truck } from "lucide-react";
 import ActivityIcon from "@/components/ActivityIcon";
+import Photo from "@/components/Photo";
 import { SITE, ACTIVITIES } from "@/lib/siteData";
 import { CLIENT } from "@/lib/config";
 
@@ -90,7 +91,7 @@ export default function Home() {
             {ACTIVITIES.map((a) => (
               <a key={a.slug} href={`${CLIENT}/activities/${a.slug}`} className="row">
                 <div className="row-title">
-                  <div className="row-icon"><ActivityIcon name={a.icon} /></div>
+                  <Photo className="row-icon" src={`/activities/${a.slug}.svg`} alt={a.title} fallback={<ActivityIcon name={a.icon} />} />
                   <div>
                     <h3>{a.title}</h3>
                   </div>

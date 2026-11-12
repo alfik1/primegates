@@ -24,8 +24,8 @@ export default function Gallery() {
           <div className="gallery">
             {items.map((a) => (
               <figure className="tile" key={a.slug}>
-                {/* Add your photos as public/gallery/<slug>.jpg, e.g. public/gallery/mobile-phones.jpg */}
-                <img src={`/gallery/${a.slug}.jpg`} alt={a.title} loading="lazy" onError={(e) => (e.currentTarget.style.display = "none")} />
+                {/* Uses the same photos as the activities: public/activities/<slug>.svg */}
+                <img src={`/activities/${a.slug}.svg`} alt={a.title} loading="lazy" onError={(e) => (e.currentTarget.style.display = "none")} />
                 <ActivityIcon name={a.icon} size={54} />
                 <figcaption>{a.title}</figcaption>
               </figure>

@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import ActivityIcon from "../components/ActivityIcon.jsx";
+import Photo from "../components/Photo.jsx";
 import { ACTIVITIES, SITE } from "../data";
 
 export default function ActivityDetail() {
@@ -30,7 +31,7 @@ export default function ActivityDetail() {
       <section className="section">
         <div className="container detail">
           <article className="prose">
-            <div className="big-icon"><ActivityIcon name={a.icon} size={38} /></div>
+            <Photo className="detail-photo" src={`/activities/${a.slug}.svg`} alt={a.title} fallback={<ActivityIcon name={a.icon} size={64} />} />
             <p style={{ color: "var(--text)", fontSize: 21, fontWeight: 600 }}>{a.short}</p>
             <p>{a.medium}</p>
             <p>{a.long}</p>
