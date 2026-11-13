@@ -1,6 +1,7 @@
 import { ArrowRight, ShieldCheck, Globe, Tag, Truck } from "lucide-react";
 import ActivityIcon from "@/components/ActivityIcon";
 import Photo from "@/components/Photo";
+import HeroVideo from "@/components/HeroVideo";
 import { ART } from "@/lib/artwork";
 import { SITE, ACTIVITIES } from "@/lib/siteData";
 import { CLIENT } from "@/lib/config";
@@ -16,39 +17,10 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
-        {/* Background video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 0,
-          }}
-        >
-          <source src="/home/home.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay so the text stays readable */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 0,
-            background:
-              "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.35) 100%)",
-          }}
-        />
-
-        <div className="container hero-grid" style={{ position: "relative", zIndex: 1 }}>
+      <section className="hero">
+        <HeroVideo src="/home/home.mp4" />
+        <div className="hero-shade" />
+        <div className="container hero-grid">
           <div className="fade">
             <p className="hero-sub">{SITE.name}, Ajman, UAE</p>
             <h1>Your gateway to premium trade across the UAE and the GCC.</h1>
@@ -171,7 +143,7 @@ export default function Home() {
           <p>Send your product list or requirements and we will reply with availability and pricing.</p>
           <div className="btns">
             <a href={`${CLIENT}/contact`} className="btn btn-gold">Request a quote</a>
-            <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-outline">Chat on WhatsApp</a>
+            <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn btn-outline">Chat on WhatsApp</a>
           </div>
         </div>
       </section>

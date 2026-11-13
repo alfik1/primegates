@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, User } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import { SITE, ACTIVITIES } from "../data";
 
-const WHATSAPP_NUMBER = "971551599313";
-const WHATSAPP_DISPLAY = "+971 55 159 9313";
+const lbl = { display: "block", color: "var(--gold)", fontSize: 13 };
 
 export default function Contact() {
   const [params] = useSearchParams();
@@ -32,17 +31,14 @@ export default function Contact() {
         <div className="container contact-grid">
           <div className="grid">
             <div className="card">
-              <h3 style={{ fontSize: 30, marginBottom: 18 }}>Get in touch</h3>
-              <div className="info-row"><Phone size={18} /><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></div>
-              <div className="info-row">
-                <MessageCircle size={18} />
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">WhatsApp {WHATSAPP_DISPLAY}</a>
-              </div>
-              <div className="info-row"><Mail size={18} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
-              <div className="info-row">
-                <MapPin size={18} />
-                <span>{SITE.address}, UAE<br />License {SITE.license}</span>
-              </div>
+              <h3 style={{ fontSize: 30, marginBottom: 6 }}>Get in touch</h3>
+              <p className="muted" style={{ marginBottom: 20, fontSize: 15 }}>For all your enquiries, quotations and orders.</p>
+              <div className="info-row"><User size={18} /><span><small style={lbl}>Contact person</small>{SITE.contactPerson}</span></div>
+              <div className="info-row"><Phone size={18} /><span><small style={lbl}>Mobile</small><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></span></div>
+              <div className="info-row"><MessageCircle size={18} /><span><small style={lbl}>WhatsApp</small><a href={SITE.whatsappLink} target="_blank" rel="noreferrer">Chat with us on WhatsApp</a></span></div>
+              <div className="info-row"><Mail size={18} /><span><small style={lbl}>General enquiries</small><a href={`mailto:${SITE.email}`}>{SITE.email}</a></span></div>
+              <div className="info-row"><Mail size={18} /><span><small style={lbl}>Direct email</small><a href={`mailto:${SITE.emailDirect}`}>{SITE.emailDirect}</a></span></div>
+              <div className="info-row"><MapPin size={18} /><span><small style={lbl}>Office</small>{SITE.address}, UAE<br />License {SITE.license}</span></div>
             </div>
             <iframe
               className="map"

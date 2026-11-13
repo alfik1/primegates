@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, User } from "lucide-react";
 import { SITE, ACTIVITIES } from "../data";
 import { WEB } from "../config";
+
+const lbl = { display: "block", color: "var(--gold)", fontSize: 12.5 };
 
 export default function Footer() {
   return (
@@ -32,9 +34,12 @@ export default function Footer() {
 
         <div>
           <h4>Contact</h4>
-          <div className="info-row"><MapPin size={18} /><span>{SITE.address}, UAE<br />License {SITE.license}</span></div>
-          <div className="info-row"><Phone size={18} /><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></div>
-          <div className="info-row"><Mail size={18} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+          <div className="info-row"><User size={18} /><span><small style={lbl}>Contact person</small>{SITE.contactPerson}</span></div>
+          <div className="info-row"><Phone size={18} /><span><small style={lbl}>Mobile</small><a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a></span></div>
+          <div className="info-row"><MessageCircle size={18} /><span><small style={lbl}>WhatsApp</small><a href={SITE.whatsappLink} target="_blank" rel="noreferrer">Chat with us on WhatsApp</a></span></div>
+          <div className="info-row"><Mail size={18} /><span><small style={lbl}>General enquiries</small><a href={`mailto:${SITE.email}`}>{SITE.email}</a></span></div>
+          <div className="info-row"><Mail size={18} /><span><small style={lbl}>Direct email</small><a href={`mailto:${SITE.emailDirect}`}>{SITE.emailDirect}</a></span></div>
+          <div className="info-row"><MapPin size={18} /><span><small style={lbl}>Office</small>{SITE.address}, UAE<br />License {SITE.license}</span></div>
         </div>
       </div>
       <div className="container copy">

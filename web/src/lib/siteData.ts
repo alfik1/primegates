@@ -4,9 +4,12 @@ export const SITE = {
   legal: "Free Zone Entity - FZE LLC",
   license: "CWS-1V-229397",
   address: "26th Floor, Amber Gem Tower, Ajman",
-  email: "waseemsidddique@gmail.com",
-  phone: "+971 55 265 3707",
+  email: "info@primegategeneral.com",
+  emailDirect: "waseem@primegategeneral.com",
+  contactPerson: "Waseem",
+  phone: "+971 55 159 9313",
   whatsapp: "971551599313",
+  whatsappLink: "https://wa.me/message/YRQ7PUWZYXCDB1",
 };
 
 export const ACTIVITIES = [
